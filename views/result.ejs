@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Validation Results</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <h1>Validation Results</h1>
+  <% if (emailData) { %>
+    <h2>Email Validation</h2>
+    <p>Email: <%= emailData.email %></p>
+    <p>Deliverability: <%= emailData.deliverability %></p>
+    <p>Is Valid Format: <%= emailData.is_valid_format.value %></p>
+    <p>Is Free Email: <%= emailData.is_free_email.value %></p>
+    <p>Is Disposable Email: <%= emailData.is_disposable_email.value %></p>
+  <% } %>
+
+  <% if (spamData) { %>
+    <h2>Spam Check</h2>
+    <p>Spam Score: <%= spamData.spam_score %></p>
+    <p>Message: <%= spamData.message %></p>
+  <% } %>
+</body>
+</html>
