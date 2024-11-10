@@ -14,11 +14,14 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 
 app.get("/", (req, res) => {
-  res.send("Welcome to PublicSpamValidator!");
+  res.render("index");
 });
 
 app.get("/validate-email", async (req, res) => {
   const email = req.query.email; // Get email from query parameter
+  if(!email){
+    return res.status(400).send("Email is required.");
+  }
   try {
     const response = await axios.get(
       `https://emailvalidation.abstractapi.com/v1/?api_key=${process.env.ABSTRACT_API_KEY}&email=${email}`
@@ -34,8 +37,11 @@ app.get("/validate-email", async (req, res) => {
 app.get("/check-spam", async (req, res) => {
   console.log(process.env.OOPSPAM_API_KEY);
   const text = req.query.text; // Get text from query parameter
+  if (!text){
+    return res.status(400).send("Text is required.");
+  }
   try {
-    const response = await axios.post("https://api.oopspam.com/v1", {
+    const response = await axios.post("https://api.oopspam.com/v1/spamdetection", {
       text: text,
       api_key: process.env.OOPSPAM_API_KEY,
     },{
@@ -45,10 +51,11 @@ app.get("/check-spam", async (req, res) => {
       }
     });
     const spamData = response.data;
+    console.log(spamData);
     res.render("result", { emailData: null, spamData });
   } catch (error) {
     console.error("Error checking spam:", error.response ? error.response.data : error.message);
-    res.status(500).send("Error checking spam");
+    res.status(500).send("Error checking spam. Please try again later.");
   }
 });
 

@@ -19,8 +19,9 @@
 
   <% if (spamData) { %>
     <h2>Spam Check</h2>
-    <p>Spam Score: <%= spamData.spam_score %></p>
-    <p>Message: <%= spamData.message %></p>
+    <p>Spam Score: <%= spamData.Score %></p>
+    <p>Content Spam Status: <%= spamData.Details.isContentSpam %></p>
+    <p>Number of Spam Words: <%= spamData.Details.numberOfSpamWords %></p>
   <% } %>
 </body>
 </html>
