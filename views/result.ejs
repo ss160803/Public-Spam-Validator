@@ -8,6 +8,7 @@
 </head>
 <body>
   <h1>Validation Results</h1>
+
   <% if (emailData) { %>
     <h2>Email Validation</h2>
     <p>Email: <%= emailData.email %></p>
@@ -15,6 +16,9 @@
     <p>Is Valid Format: <%= emailData.is_valid_format.value %></p>
     <p>Is Free Email: <%= emailData.is_free_email.value %></p>
     <p>Is Disposable Email: <%= emailData.is_disposable_email.value %></p>
+    <% if (cacheHit) { %> 
+      <p><strong>Note:</strong> This result was served from cache.</p> 
+      <% } %>
   <% } %>
 
   <% if (spamData) { %>
@@ -22,6 +26,15 @@
     <p>Spam Score: <%= spamData.Score %></p>
     <p>Content Spam Status: <%= spamData.Details.isContentSpam %></p>
     <p>Number of Spam Words: <%= spamData.Details.numberOfSpamWords %></p>
+    <% if (spamData.Details.spamWords && spamData.Details.spamWords.length > 0) { %>
+      <p>Spam Words: <%= spamData.Details.spamWords.join(", ") %></p>
+    <% } %>
+    <p>IP Blocked: <%= spamData.Details.isIPBlocked %></p>
+    <p>Email Blocked: <%= spamData.Details.isEmailBlocked %></p>
+    <p>Content Too Short: <%= spamData.Details.isContentTooShort %></p>
+    <% if (cacheHit) { %> 
+      <p><strong>Note:</strong> This result was served from cache.</p> 
+      <% } %>
   <% } %>
 </body>
 </html>
