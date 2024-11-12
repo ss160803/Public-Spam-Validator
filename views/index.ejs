@@ -10,23 +10,48 @@
   <div class="container">
     <h1>PublicSpamValidator</h1>
 
-    <h2>Email Validation</h2>
-    <form action="/validate-email" method="get">
-      <label for="email">Enter Email:</label>
-      <input type="email" id="email" name="email" required placeholder="@">
-      <button type="submit">Validate Email</button>
-    </form>
+    <div id="cookie-banner">
+      <p>We use cookies to enhance your experience. By continuing, you agree to our use of cookies. <a href="/privacy-policy">Learn more</a></p>
+      <button id="accept-cookies">Accept</button>
+      <button id="decline-cookies">Decline</button>
+    </div>
 
-    <h2>Spam Detection</h2>
-    <form action="/check-spam" method="get">
-      <label for="text">Enter Text:</label>
-      <textarea id="text" name="text" required placeholder="Paste spam message here.."></textarea>
-      <!-- <label for="senderEmail">Enter Sender Email (optional):</label>
-      <input type="email" id="senderEmail" name="senderEmail"> -->
-      <label for="senderIP">Enter Sender IP (optional):</label>
-      <input type="text" id="senderIP" name="senderIP" placeholder="Optional">
-      <button type="submit">Check Spam</button>
-    </form>
+    <div id="main-content" style="display: none;">
+      <h2>Email Validation</h2>
+      <form action="/validate-email" method="get">
+        <label for="email">Enter Email:</label>
+        <input type="email" id="email" name="email" required placeholder="@">
+        <button type="submit">Validate Email</button>
+      </form>
+
+      <h2>Spam Detection</h2>
+      <form action="/check-spam" method="get">
+        <label for="text">Enter Text:</label>
+        <textarea id="text" name="text" required placeholder="Paste spam message here.."></textarea>
+        <label for="senderIP">Enter Sender IP (optional):</label>
+        <input type="text" id="senderIP" name="senderIP" placeholder="Optional">
+        <button type="submit">Check Spam</button>
+      </form>
+    </div>
   </div>
+
+  <script>
+    document.getElementById('accept-cookies').addEventListener('click', function() {
+      document.cookie = "userConsent=true; path=/; secure; HttpOnly";
+      document.getElementById('cookie-banner').style.display = 'none';
+      document.getElementById('main-content').style.display = 'block';
+    });
+
+    document.getElementById('decline-cookies').addEventListener('click', function() {
+      alert('Cookies are required to use this service. Please contact support for more information.');
+      window.location.href = "/contact-support";
+    });
+
+    // Check if user already gave consent
+    if (document.cookie.split('; ').find(row => row.startsWith('userConsent=true'))) {
+      document.getElementById('cookie-banner').style.display = 'none';
+      document.getElementById('main-content').style.display = 'block';
+    }
+  </script>
 </body>
 </html>
