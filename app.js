@@ -132,10 +132,14 @@ app.get("/check-spam", async (req, res, next) => {
         "X-Api-Key": process.env.OOPSPAM_API_KEY,
       },
     });
+    
     console.log("Spam Detection Request Data:", JSON.stringify(requestData, null, 2));
     console.log("Spam Detection Response:", JSON.stringify(response.data, null, 2));
     const spamData = response.data;
     // Log the complete response
+    spamData.Details.isIPBlocked = spamData.Details.isIPBlocked || false; 
+    spamData.Details.isEmailBlocked = spamData.Details.isEmailBlocked || false; 
+    spamData.Details.isContentTooShort = spamData.Details.isContentTooShort || false;
 
     cache.set(`check-spam-${text}-${userId}`, spamData);
 
@@ -154,6 +158,9 @@ app.get("/contact-support", (req, res) => {
   res.render("contact-support");
 });
 
+app.get("/about-us",(req,res)=>{
+  res.render("about-us");
+})
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });

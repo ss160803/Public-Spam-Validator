@@ -1,57 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PublicSpamValidator</title>
+  <title>Home</title>
   <link rel="stylesheet" href="/styles.css">
 </head>
+
 <body>
-  <div class="container">
-    <h1>PublicSpamValidator</h1>
+  <!-- Header -->
+  <header>
+    <img src="/images/logo.jpg" alt="Website Logo">
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/contact-support">Contact</a></li>
+        <li><a href="/about-us">About Us</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <div id="cookie-banner">
-      <p>We use cookies to enhance your experience. By continuing, you agree to our use of cookies. <a href="/privacy-policy">Learn more</a></p>
-      <button id="accept-cookies">Accept</button>
-      <button id="decline-cookies">Decline</button>
+    <!-- Cookie Banner overlay -->
+    <div id="cookie-banner" class="cookie-banner active">
+      <div class="cookie-topbar">
+        <img src="/images/cookie.png" alt="Cookie-img" class="cookie-image">
+      </div>
+      <div class="cookie-content">
+        <h2 class="cookie-title">We Use Cookies</h2>
+        <p>We use cookies to personalize your experience and analyze site usage. By using our site, you agree to our use
+          of cookies.</p>
+        <div class="cookie-buttons">
+          <button id="accept-cookies" class="cookie-button">Yes Please!</button>
+          <button id="decline-cookies" class="cookie-button">No..I'm full</button>
+        </div>
+        <p><a href="/privacy-policy">Read more</a></p>
+      </div>
     </div>
 
-    <div id="main-content" style="display: none;">
-      <h2>Email Validation</h2>
-      <form action="/validate-email" method="get">
-        <label for="email">Enter Email:</label>
-        <input type="email" id="email" name="email" required placeholder="@">
-        <button type="submit">Validate Email</button>
-      </form>
 
-      <h2>Spam Detection</h2>
-      <form action="/check-spam" method="get">
-        <label for="text">Enter Text:</label>
-        <textarea id="text" name="text" required placeholder="Paste spam message here.."></textarea>
-        <label for="senderIP">Enter Sender IP (optional):</label>
-        <input type="text" id="senderIP" name="senderIP" placeholder="Optional">
-        <button type="submit">Check Spam</button>
-      </form>
-    </div>
-  </div>
+
+  <main class="blurred">
+    <h2>How to Use:</h2>
+
+    <!-- E-Mail Validation Section -->
+    <section class="email-validation">
+      <div class="background-image">
+        <h2>E-Mail Validation</h2>
+      </div>
+      <div class="form-container">
+        <form action="/validate-email" method="get">
+          <div class="form-row">
+            <div class="step">
+              <h3>Step 1</h3>
+              <p>Enter email in the input box</p>
+              <input type="email" id="email" name="email" placeholder="@" required>
+            </div>
+            <div class="step">
+              <h3>Step 2</h3>
+              <p>Click on the Verify Email button</p>
+              <button type="submit">Verify Email</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Spam Detection Section -->
+    <section class="spam-detection">
+      <div class="background-image" style="padding-bottom: 40px;">
+        <h2>Spam Detection</h2>
+      </div>
+      <div class="form-container">
+        <form action="/check-spam" method="get">
+          <div class="form-row">
+            <div class="step">
+              <h3>Step 1</h3>
+              <p>Enter spam message and optional sender IP</p>
+              <textarea id="text" name="text" placeholder="Paste spam message here..." required></textarea>
+              <input type="text" id="senderIP" name="senderIP" placeholder="Sender IP (optional)">
+            </div>
+            <div class="step">
+              <h3>Step 2</h3>
+              <p>Click on the Check Spam button</p>
+              <button type="submit">Check Spam</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
 
   <script>
-    document.getElementById('accept-cookies').addEventListener('click', function() {
+    document.getElementById('accept-cookies').addEventListener('click', function () {
       document.cookie = "userConsent=true; path=/; secure; HttpOnly";
       document.getElementById('cookie-banner').style.display = 'none';
-      document.getElementById('main-content').style.display = 'block';
+      document.querySelector('main').classList.remove('blurred');
     });
 
-    document.getElementById('decline-cookies').addEventListener('click', function() {
+    document.getElementById('decline-cookies').addEventListener('click', function () {
       alert('Cookies are required to use this service. Please contact support for more information.');
       window.location.href = "/contact-support";
     });
 
-    // Check if user already gave consent
-    if (document.cookie.split('; ').find(row => row.startsWith('userConsent=true'))) {
-      document.getElementById('cookie-banner').style.display = 'none';
-      document.getElementById('main-content').style.display = 'block';
-    }
+    // Check if user already gave consent 
+    window.onload = function () {
+      if (document.cookie.split('; ').find(row => row.startsWith('userConsent=true'))) {
+        document.getElementById('cookie-banner').style.display = 'none';
+        document.querySelector('main').classList.remove('blurred');
+      } else {
+        document.querySelector('main').classList.add('blurred');
+      }
+    };
   </script>
 </body>
+
 </html>

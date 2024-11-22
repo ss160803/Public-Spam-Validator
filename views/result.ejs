@@ -1,40 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Validation Results</title>
   <link rel="stylesheet" href="/styles.css">
 </head>
+
 <body>
-  <h1>Validation Results</h1>
 
-  <% if (emailData) { %>
-    <h2>Email Validation</h2>
-    <p>Email: <%= emailData.email %></p>
-    <p>Deliverability: <%= emailData.deliverability %></p>
-    <p>Is Valid Format: <%= emailData.is_valid_format.value %></p>
-    <p>Is Free Email: <%= emailData.is_free_email.value %></p>
-    <p>Is Disposable Email: <%= emailData.is_disposable_email.value %></p>
-    <% if (cacheHit) { %> 
-      <p><strong>Note:</strong> This result was served from cache.</p> 
-      <% } %>
-  <% } %>
+  <header>
+    <img src="/images/logo.jpg" alt="Website Logo">
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/contact-support">Contact</a></li>
+        <li><a href="#">About Us</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <% if (spamData) { %>
-    <h2>Spam Check</h2>
-    <p>Spam Score: <%= spamData.Score %></p>
-    <p>Content Spam Status: <%= spamData.Details.isContentSpam %></p>
-    <p>Number of Spam Words: <%= spamData.Details.numberOfSpamWords %></p>
-    <% if (spamData.Details.spamWords && spamData.Details.spamWords.length > 0) { %>
-      <p>Spam Words: <%= spamData.Details.spamWords.join(", ") %></p>
-    <% } %>
-    <p>IP Blocked: <%= spamData.Details.isIPBlocked %></p>
-    <p>Email Blocked: <%= spamData.Details.isEmailBlocked %></p>
-    <p>Content Too Short: <%= spamData.Details.isContentTooShort %></p>
-    <% if (cacheHit) { %> 
-      <p><strong>Note:</strong> This result was served from cache.</p> 
-      <% } %>
-  <% } %>
+  <!-- Unique Wrapper -->
+
+  <main class="result-main">
+    <h1 class="result-page__title">Validation Results</h1>
+    <div class="result-page">
+
+      <% if (emailData) { %>
+        <section class="result-page__section">
+          <h2 class="result-page__heading">Email Validation</h2>
+          <div class="result-page__item">
+            <strong class="result-page__label">Email:</strong>
+            <%= emailData.email %>
+          </div>
+          <div class="result-page__item">
+            <strong class="result-page__label">Deliverability:</strong>
+            <% if (emailData.deliverability==='DELIVERABLE' ) { %>
+              <span class="result-page__icon result-page__icon--check"></span> Deliverable
+              <% } else { %>
+                <span class="result-page__icon result-page__icon--cross"></span> Not Deliverable
+                <% } %>
+          </div>
+          <div class="result-page__item">
+            <strong class="result-page__label">Is Valid Format:</strong>
+            <% if (emailData.is_valid_format.value) { %>
+              <span class="result-page__icon result-page__icon--check"></span> Yes
+              <% } else { %>
+                <span class="result-page__icon result-page__icon--cross"></span> No
+                <% } %>
+          </div>
+          <div class="result-page__item">
+            <strong class="result-page__label">Is Free Email:</strong>
+            <% if (emailData.is_free_email.value) { %>
+              <span class="result-page__icon result-page__icon--check"></span> Yes
+              <% } else { %>
+                <span class="result-page__icon result-page__icon--cross"></span> No
+                <% } %>
+          </div>
+          <div class="result-page__item">
+            <strong class="result-page__label">Is Disposable Email:</strong>
+            <% if (emailData.is_disposable_email.value) { %>
+              <span class="result-page__icon result-page__icon--check"></span> Yes
+              <% } else { %>
+                <span class="result-page__icon result-page__icon--cross"></span> No
+                <% } %>
+          </div>
+          <% if (cacheHit) { %>
+            <p class="result-page__note"><strong>Note:</strong> This result was served from cache.</p>
+            <% } %>
+  
+              <!-- Return Button -->
+              <div class="result-page__button-wrapper">
+                <a href="/" class="result-page__button">
+                  Return <span class="result-page__button-icon"></span>
+                </a>
+              </div>
+  
+        </section>
+        <% } %>
+  
+  
+          <% if (spamData) { %>
+            <section class="result-page__section">
+              <h2 class="result-page__heading">Spam Check</h2>
+              <div class="result-page__item">
+                <strong class="result-page__label">Spam Score:</strong>
+                <%= spamData.Score %>
+              </div>
+              <div class="result-page__item">
+                <strong class="result-page__label">Content Spam Status:</strong>
+                <%= spamData.Details.isContentSpam %>
+              </div>
+              <div class="result-page__item">
+                <strong class="result-page__label">Number of Spam Words:</strong>
+                <%= spamData.Details.numberOfSpamWords %>
+              </div>
+              <% if (spamData.Details.spamWords && spamData.Details.spamWords.length> 0) { %>
+                <div class="result-page__item">
+                  <strong class="result-page__label">Spam Words:</strong>
+                  <%= spamData.Details.spamWords.join(", ") %>
+          </div>
+        <% } %>
+        <div class=" result-page__item">
+                    <strong class="result-page__label">IP Blocked:</strong>
+                    <% if (spamData.Details.isIPBlocked) { %>
+                      <span class="result-page__icon result-page__icon--check"></span> Yes
+                      <% } else { %>
+                        <span class="result-page__icon result-page__icon--cross"></span> No
+                        <% } %>
+                </div>
+                <div class="result-page__item">
+                  <strong class="result-page__label">Email Blocked:</strong>
+                  <% if (spamData.Details.isEmailBlocked) { %>
+                    <span class="result-page__icon result-page__icon--check"></span> Yes
+                    <% } else { %>
+                      <span class="result-page__icon result-page__icon--cross"></span> No
+                      <% } %>
+                </div>
+                <div class="result-page__item">
+                  <strong class="result-page__label">Content Too Short:</strong>
+                  <% if (spamData.Details.isContentTooShort) { %>
+                    <span class="result-page__icon result-page__icon--check"></span> Yes
+                    <% } else { %>
+                      <span class="result-page__icon result-page__icon--cross"></span> No
+                      <% } %>
+                </div>
+                <% if (cacheHit) { %>
+                  <p class="result-page__note"><strong>Note:</strong> This result was served from cache.</p>
+                  <% } %>
+  
+  
+                    <!-- Return Button -->
+                    <div class="result-page__button-wrapper">
+                      <a href="/" class="result-page__button">
+                        Return <span class="result-page__button-icon"></span>
+                      </a>
+                    </div>
+  
+            </section>
+            <% } %>
+  
+    </div>
+
+  </main>
 </body>
+
 </html>
