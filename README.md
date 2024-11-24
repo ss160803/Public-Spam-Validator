@@ -12,6 +12,15 @@ PublicSpamValidator is a web application designed to provide users with a seamle
   - [Setup](#setup)
     - [Prerequisites](#prerequisites)
     - [Installation](#installation)
+  - [Usage](#usage)
+    - [Email Validation](#email-validation)
+    - [Spam Detection](#spam-detection)
+  - [APIs](#apis)
+    - [OOPSpam](#oopspam)
+    - [Abstract API](#abstract-api)
+  - [Contributing](#contributing)
+    - [Contributions are welcome! Please follow these steps:](#contributions-are-welcome-please-follow-these-steps)
+  - [License](#license)
 
 ## About
 
@@ -53,23 +62,65 @@ Ensure you have the following installed:
    ```sh
    git clone https://github.com/yourusername/PublicSpamValidator.git
 
-   ```
 
 2. **Navigate to the project directory:**
-
    ```sh
    cd PublicSpamValidator
 
-   ```
 
 3. **Install dependencies:**
-
    ```sh
    npm install
 
-   ```
-
 4. **Create a .env file in the root directory and add your API keys:**
+    ```Plaintext
+    ABSTRACT_API_KEY=your_abstract_api_key
+OOPSPAM_API_KEY=your_oopspam_api_key
+
+5. **Start the server:**
+   ```sh
+   nodemon app.js
+   ```
+6. **Open Browser and Navigate to:**
    ```Plaintext
-   ABSTRACT_API_KEY=your_abstract_api_key
-   OOPSPAM_API_KEY=your_oopspam_api_key
+   http://localhost:3000
+
+## Usage
+
+### Email Validation
+
+1. **Enter the email you wish to validate.**
+2. **Click on th "Verify Email"**
+3. **View the validation results on the results page.**
+
+### Spam Detection
+
+1. **Enter the text you wish to check for spam.**
+2. **Click on the "Check Spam" button.**
+3. **View the spam detection results on the results page.**
+
+## APIs
+
+### OOPSpam
+- For spam detection.
+- Learn more at OOPSpam.com
+  
+### Abstract API
+- For email validation.
+- Learn more at abstractapi.com
+
+## Contributing
+
+### Contributions are welcome! Please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch `git checkout -b feature/your-feature-name`.
+3. Commit your changes `git commit -m 'Add some feature'`
+4. Push to the branch `git push origin feature/your-feature-name`
+5. Create a Pull Request.
+
+## License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+
+Feel free to modify the content to better fit your project's specific details and requirements. If you need any additional sections or adjustments, just let me know! 😊 Your thorough documentation will ensure that others can easily understand and contribute to your project. 🚀
