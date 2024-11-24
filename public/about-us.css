@@ -1,0 +1,519 @@
+body {
+  font-family: "Arial", sans-serif;
+  margin: 20px;
+  background-color: #f9fafb;
+  color: #333;
+  margin: 0;
+}
+
+header {
+  background-color: #fff;
+  padding: 20px 100px 20px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: black;
+  box-shadow: 0 0 20px 4px rgba(0, 0, 0, 0.25);
+}
+
+header img {
+  height: 50px;
+}
+
+.hamburger {
+  display: none;
+}
+
+nav {
+  display: flex; /* Show navigation as a horizontal menu */
+  position: static; /* Reset absolute positioning */
+  flex-direction: row; /* Ensure items are aligned horizontally */
+  gap: 20px; /* Add spacing between links */
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+}
+
+nav li {
+  display: inline;
+}
+
+nav a {
+  color: black;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+nav a:hover {
+  text-decoration: none;
+}
+
+a {
+  color: #007bff;
+}
+
+a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+/* Main Section Margin */
+.main-section {
+  margin: 0 30px;
+}
+
+/* Banners */
+.banner {
+  position: relative;
+  background-size: cover;
+  height: 618px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 30px auto;
+  margin-bottom: 20px;
+}
+
+.gradient-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(255, 157, 0, 0.5), rgba(2, 0, 136, 1));
+  z-index: 1;
+}
+
+.banner h1 {
+  position: relative;
+  z-index: 1;
+  color: #ffffff;
+  font-size: 64px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.banner p {
+  position: relative;
+  z-index: 2;
+  color: #ffffff;
+  font-size: 16px;
+  text-align: justify;
+  font-family: Arial, Helvetica, sans-serif;
+  font-style: normal;
+  max-width: 601px;
+}
+
+.services-title {
+  margin-bottom: 8%; /* Add spacing at the top */
+}
+
+/* Cards Section */
+.cards {
+  display: flex;
+  gap: 105px;
+  justify-content: center;
+  margin-top: -7%;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 5%;
+}
+
+/* Card Container to Handle Circle and Card Layout */
+.card-container {
+  position: relative;
+  width: 250px;
+  height: 380px; /* Matches card dimensions */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Circle Style */
+.circle {
+  position: absolute;
+  top: -65px; /* Adjusted to center the circle on the card */
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Shadow matches the requirement */
+  z-index: 3;
+}
+
+.circle img {
+  width: 70px;
+  height: 70px;
+}
+
+/* Card Style */
+.our-services-list ul {
+  display: none;
+}
+
+ul {
+  display: none;
+}
+
+.card {
+  width: 250px;
+  height: 380px;
+  padding-top: 90px;
+  padding-bottom: 70px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Matches design */
+  /* padding: 20px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 1;
+}
+
+.card h3 {
+  font-size: 14px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  color: #000000;
+}
+
+.card hr {
+  width: 128px;
+  height: 3px;
+  background-color: #ff9d00;
+  border: none;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 12px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-style: normal;
+  width: 191px;
+  height: 113px;
+  text-align: left;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000000;
+}
+
+/* Hover Effects */
+.card-container:hover .card {
+  background-color: #020088;
+  color: white;
+}
+
+.card-container:hover .card h3,
+.card-container:hover .card p {
+  color: white;
+}
+
+/* Ensuring Circle Remains Unchanged on Hover */
+
+/* API Section */
+.api-section {
+  margin: 50px 0;
+}
+
+.api-section h2 {
+  text-align: center;
+  font-size: 64px;
+  margin-bottom: 20px;
+  color: #000000;
+  font-family: "Poppins", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.api-content {
+  display: flex;
+  justify-content: space-around;
+}
+
+.api-item {
+  text-align: center;
+}
+
+.image-holder {
+  width: 400px;
+  height: 300px;
+  object-fit: contain;
+  background-color: #ffffff;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  animation: fadeInOut 2s infinite;
+}
+
+/* Footer */
+.footer {
+  background-color: #020088;
+  color: #fff;
+  padding: 30px 15px;
+  font-family: "Arial", sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.footer-container > div {
+  flex: 1;
+  min-width: 200px;
+  text-align: center;
+}
+
+.footer-container h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.footer a {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  margin: 5px 0;
+  transition: color 0.3s ease;
+}
+
+.footer a:hover {
+  color: #ff9d00;
+}
+
+.footer .social-media i,
+.footer .menu i {
+  margin-right: 5px;
+}
+
+.footer p {
+  margin: 5px 0;
+}
+
+.footer .developer-name span {
+  font-weight: bold;
+  color: #ff9d00;
+}
+
+.footer .branding p {
+  font-size: 0.9rem;
+}
+
+.footer .menu a,
+.footer .social-media a {
+  text-transform: capitalize;
+}
+
+.footer .menu {
+  margin-top: 10px;
+}
+
+.footer-container div:last-child {
+  text-align: right;
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+  }
+
+  .footer-container div {
+    text-align: center;
+  }
+}
+
+@media (min-width: 320px) and (max-width:767px){
+  header {
+    padding: 10px 15px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between; /* Space between logo and hamburger */
+  }
+
+  header img {
+    height: 30px; /* Reduce logo size */
+  }
+
+  /* Hamburger Menu */
+  .hamburger {
+    display: block;
+    width: 25px;
+    height: 20px;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: black;
+    margin: 4px 0;
+    transition: all 0.3s ease-in-out;
+  }
+
+  nav {
+    position: absolute;
+    top: 60px; /* Below the header */
+    right: 0;
+    width: 200px; /* Width of the dropdown */
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: none; /* Initially hidden */
+    flex-direction: column;
+    z-index: 100;
+  }
+
+  nav ul {
+    flex-direction: column; /* Stack navigation items vertically */
+    gap: 10px;
+    padding: 10px;
+    list-style: none;
+    margin: 0;
+  }
+
+  nav a {
+    font-size: 14px; /* Adjust font size */
+    text-align: left;
+    text-decoration: none;
+    color: black;
+    padding: 5px 10px;
+    display: block;
+  }
+
+  nav a:hover {
+    background-color: #f0f0f0;
+    border-radius: 4px;
+  }
+
+  /* Show menu when active */
+  .hamburger.active + nav {
+    display: flex;
+    flex-direction: column; /* Align items vertically */
+    position: absolute;
+    top: 60px; /* Below the header */
+    right: 0;
+    background-color: #fff;
+    width: 200px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+  }
+
+  /* Banners */
+  .banner {
+    position: relative;
+    background-size: cover;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 30px auto;
+    margin-bottom: 20px;
+  }
+
+  .gradient-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(255, 157, 0, 0.5), rgba(2, 0, 136, 1));
+    z-index: 1;
+  }
+
+  .banner h1 {
+    position: relative;
+    z-index: 1;
+    color: #ffffff;
+    font-size: 18px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+
+  .banner p {
+    position: relative;
+    z-index: 2;
+    color: #ffffff;
+    font-size: 12px;
+    text-align: justify;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    max-width: 90%;
+    max-height: auto;
+  }
+
+  .services-title {
+    font-size: 16px;
+  }
+
+  .cards {
+    display: none;
+  }
+
+  .our-services-list {
+    display: flex;
+    z-index: 2;
+    margin: 0;
+  }
+
+  ul {
+    font-size: 14px;
+    list-style: inside;
+    text-align: left;
+    display: block;
+    z-index: 2;
+    padding: 0;
+  }
+
+  .api-section {
+    margin: 50px 0;
+  }
+
+  .api-section h2 {
+    font-size: 18px;
+  }
+
+  .image-holder {
+    width: 100px;
+    height: 90px;
+    border-radius: 5px;
+  }
+  p{
+    font-size: 14px;
+  }
+
+  a{
+    font-size: 14px;
+  }
+}

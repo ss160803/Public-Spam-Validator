@@ -5,18 +5,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Validation Results</title>
-  <link rel="stylesheet" href="/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="/result.css">
 </head>
 
 <body>
 
   <header>
     <img src="/images/logo.jpg" alt="Website Logo">
+    <div class="hamburger">&#9776;</div>
     <nav>
       <ul>
         <li><a href="/">Home</a></li>
         <li><a href="/contact-support">Contact</a></li>
-        <li><a href="#">About Us</a></li>
+        <li><a href="/about-us">About Us</a></li>
       </ul>
     </nav>
   </header>
@@ -32,69 +38,69 @@
           <h2 class="result-page__heading">Email Validation</h2>
           <div class="result-page__item">
             <strong class="result-page__label">Email:</strong>
-            <%= emailData.email %>
+            <span class="result-page__text"><%= emailData.email %></span>
           </div>
           <div class="result-page__item">
             <strong class="result-page__label">Deliverability:</strong>
             <% if (emailData.deliverability==='DELIVERABLE' ) { %>
-              <span class="result-page__icon result-page__icon--check"></span> Deliverable
+              <span class="result-page__icon result-page__icon--check"></span> <span class="result-page__text">Deliverable</span>
               <% } else { %>
-                <span class="result-page__icon result-page__icon--cross"></span> Not Deliverable
+                <span class="result-page__icon result-page__icon--cross"></span> <span class="result-page__text">Not Deliverable</span>
                 <% } %>
           </div>
           <div class="result-page__item">
             <strong class="result-page__label">Is Valid Format:</strong>
             <% if (emailData.is_valid_format.value) { %>
-              <span class="result-page__icon result-page__icon--check"></span> Yes
+              <span class="result-page__icon result-page__icon--check"></span> <span class="result-page__text">Yes</span>
               <% } else { %>
-                <span class="result-page__icon result-page__icon--cross"></span> No
+                <span class="result-page__icon result-page__icon--cross"></span> <span class="result-page__text">No</span>
                 <% } %>
           </div>
           <div class="result-page__item">
             <strong class="result-page__label">Is Free Email:</strong>
             <% if (emailData.is_free_email.value) { %>
-              <span class="result-page__icon result-page__icon--check"></span> Yes
+              <span class="result-page__icon result-page__icon--check"></span> <span class="result-page__text">Yes</span>
               <% } else { %>
-                <span class="result-page__icon result-page__icon--cross"></span> No
+                <span class="result-page__icon result-page__icon--cross"></span> <span class="result-page__text">No</span>
                 <% } %>
           </div>
           <div class="result-page__item">
             <strong class="result-page__label">Is Disposable Email:</strong>
             <% if (emailData.is_disposable_email.value) { %>
-              <span class="result-page__icon result-page__icon--check"></span> Yes
+              <span class="result-page__icon result-page__icon--check"></span> <span class="result-page__text">Yes</span>
               <% } else { %>
-                <span class="result-page__icon result-page__icon--cross"></span> No
+                <span class="result-page__icon result-page__icon--cross"></span> <span class="result-page__text">No</span>
                 <% } %>
           </div>
           <% if (cacheHit) { %>
             <p class="result-page__note"><strong>Note:</strong> This result was served from cache.</p>
             <% } %>
-  
+
               <!-- Return Button -->
               <div class="result-page__button-wrapper">
                 <a href="/" class="result-page__button">
                   Return <span class="result-page__button-icon"></span>
                 </a>
               </div>
-  
+
         </section>
         <% } %>
-  
-  
+
+
           <% if (spamData) { %>
             <section class="result-page__section">
               <h2 class="result-page__heading">Spam Check</h2>
               <div class="result-page__item">
                 <strong class="result-page__label">Spam Score:</strong>
-                <%= spamData.Score %>
+                <span class="result-page__text"><%= spamData.Score %></span>
               </div>
               <div class="result-page__item">
                 <strong class="result-page__label">Content Spam Status:</strong>
-                <%= spamData.Details.isContentSpam %>
+                <span class="result-page__text"><%= spamData.Details.isContentSpam %></span>
               </div>
               <div class="result-page__item">
                 <strong class="result-page__label">Number of Spam Words:</strong>
-                <%= spamData.Details.numberOfSpamWords %>
+                <span class="result-page__text"><%= spamData.Details.numberOfSpamWords %></span>
               </div>
               <% if (spamData.Details.spamWords && spamData.Details.spamWords.length> 0) { %>
                 <div class="result-page__item">
@@ -105,45 +111,53 @@
         <div class=" result-page__item">
                     <strong class="result-page__label">IP Blocked:</strong>
                     <% if (spamData.Details.isIPBlocked) { %>
-                      <span class="result-page__icon result-page__icon--check"></span> Yes
+                      <span class="result-page__icon result-page__icon--check"></span> <span class="result-page__text">Yes</span>
                       <% } else { %>
-                        <span class="result-page__icon result-page__icon--cross"></span> No
+                        <span class="result-page__icon result-page__icon--cross"></span> <span class="result-page__text">No</span>
                         <% } %>
                 </div>
                 <div class="result-page__item">
                   <strong class="result-page__label">Email Blocked:</strong>
                   <% if (spamData.Details.isEmailBlocked) { %>
-                    <span class="result-page__icon result-page__icon--check"></span> Yes
+                    <span class="result-page__icon result-page__icon--check"></span> <span class="result-page__text">Yes</span>
                     <% } else { %>
-                      <span class="result-page__icon result-page__icon--cross"></span> No
+                      <span class="result-page__icon result-page__icon--cross"></span> <span class="result-page__text">No</span>
                       <% } %>
                 </div>
                 <div class="result-page__item">
                   <strong class="result-page__label">Content Too Short:</strong>
                   <% if (spamData.Details.isContentTooShort) { %>
-                    <span class="result-page__icon result-page__icon--check"></span> Yes
+                    <span class="result-page__icon result-page__icon--check"></span> <span class="result-page__text">Yes</span>
                     <% } else { %>
-                      <span class="result-page__icon result-page__icon--cross"></span> No
+                      <span class="result-page__icon result-page__icon--cross"></span> <span class="result-page__text">No</span>
                       <% } %>
                 </div>
                 <% if (cacheHit) { %>
                   <p class="result-page__note"><strong>Note:</strong> This result was served from cache.</p>
                   <% } %>
-  
-  
+
+
                     <!-- Return Button -->
                     <div class="result-page__button-wrapper">
                       <a href="/" class="result-page__button">
                         Return <span class="result-page__button-icon"></span>
                       </a>
                     </div>
-  
+
             </section>
             <% } %>
-  
+
     </div>
 
   </main>
+
+  <script>
+    document.querySelector('.hamburger').addEventListener('click', function () {
+      this.classList.toggle('active');
+      document.querySelector('nav').classList.toggle('active');
+    });
+
+  </script>
 </body>
 
 </html>

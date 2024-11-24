@@ -11,7 +11,8 @@
 <body>
   <!-- Header -->
   <header>
-    <img src="/images/logo.jpg" alt="Website Logo">
+    <img src="/images/logo.jpg" alt="Website Logo" class="privacy-policy__logo">
+    <div class="hamburger">&#9776;</div>
     <nav>
       <ul>
         <li><a href="/">Home</a></li>
@@ -21,22 +22,22 @@
     </nav>
   </header>
 
-    <!-- Cookie Banner overlay -->
-    <div id="cookie-banner" class="cookie-banner active">
-      <div class="cookie-topbar">
-        <img src="/images/cookie.png" alt="Cookie-img" class="cookie-image">
-      </div>
-      <div class="cookie-content">
-        <h2 class="cookie-title">We Use Cookies</h2>
-        <p>We use cookies to personalize your experience and analyze site usage. By using our site, you agree to our use
-          of cookies.</p>
-        <div class="cookie-buttons">
-          <button id="accept-cookies" class="cookie-button">Yes Please!</button>
-          <button id="decline-cookies" class="cookie-button">No..I'm full</button>
-        </div>
-        <p><a href="/privacy-policy">Read more</a></p>
-      </div>
+  <!-- Cookie Banner overlay -->
+  <div id="cookie-banner" class="cookie-banner active">
+    <div class="cookie-topbar">
+      <img src="/images/cookie.png" alt="Cookie-img" class="cookie-image">
     </div>
+    <div class="cookie-content">
+      <h2 class="cookie-title">We Use Cookies</h2>
+      <p>We use cookies to personalize your experience and analyze site usage. By using our site, you agree to our use
+        of cookies.</p>
+      <div class="cookie-buttons">
+        <button id="accept-cookies" class="cookie-button">Yes Please!</button>
+        <button id="decline-cookies" class="cookie-button">No..I'm full</button>
+      </div>
+      <p><a href="/privacy-policy">Read more</a></p>
+    </div>
+  </div>
 
 
 
@@ -112,6 +113,14 @@
         document.querySelector('main').classList.add('blurred');
       }
     };
+
+    document.querySelector('.hamburger').addEventListener('click', function () {
+      this.classList.toggle('active');
+      document.querySelector('nav').classList.toggle('active');
+    });
+
+
+
   </script>
 </body>
 

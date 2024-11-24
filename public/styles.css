@@ -8,7 +8,6 @@ body {
 
 header {
   background-color: #fff;
-
   padding: 20px 100px 20px 15px;
   display: flex;
   align-items: center;
@@ -19,6 +18,17 @@ header {
 
 header img {
   height: 50px;
+}
+
+.hamburger {
+  display: none;
+}
+
+nav {
+  display: flex; /* Show navigation as a horizontal menu */
+  position: static; /* Reset absolute positioning */
+  flex-direction: row; /* Ensure items are aligned horizontally */
+  gap: 20px; /* Add spacing between links */
 }
 
 nav ul {
@@ -41,15 +51,6 @@ nav a {
 
 nav a:hover {
   text-decoration: none;
-}
-
-.container {
-  max-width: 90%;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 main {
@@ -78,7 +79,6 @@ section {
   align-items: center;
   justify-content: center;
   border-radius: 10px;
-  /* Create spacing naturally below */
 }
 
 .background-image h2 {
@@ -93,8 +93,6 @@ section {
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  /* Center it below the background */
-  /* Place it relative to the background image */
   top: 158px; /* Push it down after the background image height */
   transform: translateY(-40%); /* Adjust it to overlap neatly */
 }
@@ -117,6 +115,17 @@ section {
 .step p {
   font-size: 14px;
   margin: 10px 0;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .form-row {
+    flex-direction: column;
+  }
+
+  .step {
+    width: 100%;
+  }
 }
 
 input[type="email"],
@@ -147,17 +156,6 @@ textarea {
   height: 50px;
 }
 
-/* Responsive Adjustments */
-@media (max-width: 1024px) {
-  .form-row {
-    flex-direction: column;
-  }
-
-  .step {
-    width: 100%;
-  }
-}
-
 h1,
 h2 {
   color: #0056b3;
@@ -186,6 +184,37 @@ a:hover {
   display: none;
 }
 
+/* Background overlay effect */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3); /* Dimming effect */
+  z-index: 999; /* Just below the cookie banner */
+  display: none; /* Hide by default */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translate(-50%, 20%);
+  }
+  to {
+    transform: translate(-50%, -50%);
+  }
+}
+
 /* Cookie Banner Overlay */
 .cookie-banner {
   background: #ffffff;
@@ -205,47 +234,6 @@ a:hover {
   opacity: 0;
   z-index: 1000; /* Overlay above all other elements */
   animation: fadeIn 1s ease-out forwards, slideUp 1s ease-out forwards;
-}
-
-/* Background overlay effect */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.3); /* Dimming effect */
-  z-index: 999; /* Just below the cookie banner */
-  display: none; /* Hide by default */
-}
-
-/* Show background overlay only when cookie banner is active */
-/* .cookie-banner.active ~ .container::before {
-  display: block;
-}
-
-.cookie-banner.active ~ #main-content {
-  filter: blur(5px);
-  pointer-events: none;
-} */
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes slideUp {
-  from {
-    transform: translate(-50%, 20%);
-  }
-  to {
-    transform: translate(-50%, -50%);
-  }
 }
 
 /* Additional cookie banner styling */
@@ -312,591 +300,123 @@ body::before {
   cursor: pointer;
 }
 
-/* Scoped Styles for Result Page */
-
-.result-main{
-  margin: 20px;
-}
-
-.result-page__title {
-  background-image: url("/images/email-bg.jpg");
-  background-size: cover;
-  background-position: center;
-  height: 158px;
-  font-size: 30px;
-  font-weight: bold;
-  text-align: center;
-  line-height: 61px;
-  color: #ffffff;
-  margin: 2% auto 2% auto;
-  max-width: 1440px;
-  height: 158px;
-  border-radius: 10px;
-}
-
-.result-page {
-  padding: 20px;
-  max-width: 900px;
-  margin: 0 auto;
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  top: 158px; /* Push it down after the background image height */
-  transform: translateY(-30%); /* Adjust it to overlap neatly */
-}
-
-
-
-.result-page__section {
-  margin-bottom: 20px;
-}
-
-.result-page__heading {
-  font-size: 24px;
-  color: #444;
-  margin-bottom: 10px;
-}
-
-.result-page__item {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.result-page__label {
-  font-weight: bold;
-  margin-right: 8px;
-}
-
-.result-page__icon {
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  margin-right: 8px;
-}
-
-.result-page__icon--check {
-  background: url("/images/icons8-check-48.png") no-repeat center center;
-  background-size: contain;
-}
-
-.result-page__icon--cross {
-  background: url("/images/icons8-cross-48.png") no-repeat center center;
-  background-size: contain;
-}
-
-.result-page__note {
-  font-size: 14px;
-  color: #888;
-}
-
-.result-page__button-wrapper {
-  display: flex;
-  justify-content: center; /* Center the button horizontally */
-  margin-top: 20px; /* Adjust spacing from other elements */
-}
-
-.result-page__button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(45deg, #8a2be2, #ff1493);
-  color: white;
-  padding: 10px 80px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: bold;
-  margin-top: 20px;
-  position: relative;
-  transition: transform 0.2s ease;
-}
-
-.result-page__button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px rgba(138, 43, 226, 0.7), 0 0 30px rgba(255, 20, 147, 0.7);
-}
-
-.result-page__button-icon {
-  display: inline-block;
-  width: 18px;
-  height: 18px;
-  background: url("/images/icons8-back-32.png") no-repeat center center;
-  background-size: contain;
-  position: absolute;
-  right: 10px;
-}
-
-/* General styles for Privacy Policy page */
-.privacy-policy {
-  padding: 20px;
-  max-width: 900px;
-  margin: 0 auto;
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
-}
-
-.privacy-policy__title {
-  font-size: 28px;
-  text-align: center;
-  margin-bottom: 10px;
-  color: #000000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-}
-
-.privacy-policy__title img{
-  margin-left: 10px;
-  width: auto;
-  height: 36px;
-}
-
-.privacy-policy__title hr{
-  width: 100%;
-  height: 1.5px;
-  background-color: #00000089;
-  border: none;
-  margin: 0 auto;
-  margin-bottom: 10px;
-}
-
-.privacy-policy__date {
-  text-align: center;
-  color: #555;
-  margin-bottom: 20px;
-}
-
-.privacy-policy__heading {
-  font-size: 20px;
-  margin-top: 20px;
-  color: #0066ff;
-  text-align: left;
-}
-
-.privacy-policy__text,
-.privacy-policy__list {
-  margin: 10px 0;
-  color: #666;
-}
-
-.privacy-policy__list {
-  padding-left: 20px;
-}
-
-.privacy-policy__link {
-  color: #007bff;
-  text-decoration: none;
-}
-
-.privacy-policy__link:hover {
-  text-decoration: underline;
-}
-
-.privacy-policy__button-wrapper {
-  text-align: center;
-  margin-top: 30px;
-}
-
-.privacy-policy__button {
-  background-color: #007bff;
-  color: #fff;
-  padding: 10px 20px;
-  text-decoration: none;
-  border-radius: 5px;
-  font-size: 16px;
-  display: inline-block;
-  transition: background-color 0.3s ease;
-}
-
-.privacy-policy__button:hover {
-  background-color: #330fc2;
-  color: white;
-  text-decoration: none;
-}
-
-/* Contact Support Page Styles */
-.contact-support__wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 94.3vh;
-  background: url("/images/email-bg.jpg"); /* Matches website theme background */
-  margin: 0;
-  padding: 20px; /* Ensures spacing on smaller screens */
-}
-
-.contact-support__card {
-  background-color: #fff;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  padding: 30px;
-  max-width: 500px;
-  width: 100%; /* Makes the card responsive */
-  text-align: left;
-  font-family: Arial, sans-serif;
-  color: #333;
-}
-
-.contact-support__card hr{
-  width: 100%;
-  height: 1.5px;
-  background-color: #00000089;
-  border: none;
-  margin: 0 auto;
-  margin-bottom: 10px;
-}
-
-.contact-support__title {
-  font-size: 25px;
-  color: #000000; /* Theme's primary color */
-  margin: 20px auto;
-  text-align: center; /* Aligns title for better balance */
-  display: flex;
-  align-items: center;
-  justify-content:center ;
-}
-
-.contact-support__title img{
-  margin-left: 10px;
-  width: auto;
-  height: 32px;
-}
-
-.contact-support__text {
-  font-size: 16px;
-  color: #555;
-  line-height: 1.5;
-  margin-bottom: 15px;
-}
-
-.contact-support__link,
-.contact-support__email {
-  color: #007bff;
-  text-decoration: none;
-  word-wrap: break-word; /* Prevents long links from overflowing */
-}
-
-.contact-support__link:hover,
-.contact-support__email:hover {
-  text-decoration: underline;
-}
-
-.contact-support__button-wrapper {
-  text-align: center;
-  margin-top: 20px;
-}
-
-.contact-support__button {
-  background-color: #0084ff;
-  color: #fff;
-  padding: 8px 35px;
-  text-decoration: none;
-  border-radius: 5px;
-  font-size: 16px;
-  display: inline-block;
-  transition: background-color 0.3s ease;
-}
-
-.contact-support__button:hover {
-  background-color: #006cdf;
-  color: white;
-  text-decoration: none;
-}
-
-/* Responsive Design */
-@media (max-width: 480px) {
-  .contact-support__title {
-    font-size: 20px;
+@media (min-width: 320px) and (max-width: 767px) {
+  header {
+    padding: 10px 15px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between; /* Space between logo and hamburger */
   }
 
-  .contact-support__text {
-    font-size: 13px;
+  header img {
+    height: 30px; /* Reduce logo size */
   }
 
-  .contact-support__button {
-    padding: 6px 12px;
-    font-size: 13px;
+  /* Hamburger Menu */
+  .hamburger {
+    display: block;
+    width: 25px;
+    height: 20px;
+    cursor: pointer;
+    position: relative;
   }
-}
 
-/* Main Section Margin */
-.main-section {
-  margin: 0 30px;
-}
+  .hamburger span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: black;
+    margin: 4px 0;
+    transition: all 0.3s ease-in-out;
+  }
 
-/* Banners */
-.banner {
-  position: relative;
-  background-size: cover;
-  height: 618px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: white;
-  border-radius: 10px;
-  overflow: hidden;
-  margin: 30px auto;
-  margin-bottom: 20px;
-}
-
-.gradient-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    rgba(255, 157, 0, 0.5),
-    rgba(2, 0, 136, 1)
-  );
-  z-index: 1;
-}
-
-.banner h1{
-  position: relative;
-  z-index: 1;
-  color: #ffffff;
-  font-size: 64px;
-  font-family: "Poppins", sans-serif;
-  font-weight: 700;
-  font-style: normal;
-}
-
-.banner p{
-  position: relative;
-  z-index: 2;
-  color: #ffffff;
-  font-size: 16px;
-  text-align: justify;
-  font-family: Arial, Helvetica, sans-serif;
-  font-style: normal;
-  max-width: 601px;
-}
-
-.services-title{
-  margin-bottom:8%; /* Add spacing at the top */
-}
-
-/* Cards Section */
-.cards {
-  display: flex;
-  gap: 105px;
-  justify-content: center;
-  margin-top:-50px;
-  position: relative;
-  z-index: 1;
-}
-
-/* Card Container to Handle Circle and Card Layout */
-.card-container {
-  position: relative;
-  width: 250px;
-  height: 380px; /* Matches card dimensions */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-/* Circle Style */
-.circle {
-  position: absolute;
-  top: -65px; /* Adjusted to center the circle on the card */
-  width: 130px;
-  height: 130px;
-  border-radius: 50%;
-  background-color:#f0f0f0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 1;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Shadow matches the requirement */
-  z-index: 3;
-}
-
-.circle img {
-  width: 70px;
-  height: 70px;
-}
-
-/* Card Style */
-.card {
-  width: 250px;
-  height: 380px;
-  padding-top: 90px;
-  padding-bottom: 70px;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Matches design */
-  /* padding: 20px; */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  z-index: 1;
-}
-
-.card h3 {
-  font-size: 14px;
-  font-family: "Poppins", sans-serif;
-  font-weight: 700;
-  font-style: normal;
-  text-transform: uppercase;
-  margin-bottom: 10px;
-  color: #000000;
-}
-
-.card hr {
-  width: 128px;
-  height: 3px;
-  background-color: #ff9d00;
-  border: none;
-  margin: 0 auto;
-  margin-bottom: 10px;
-}
-
-.card p {
-  font-size: 12px;
-  font-family: Arial, Helvetica, sans-serif;
-  font-style: normal;
-  width: 191px;
-  height: 113px;
-  text-align: left;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #000000;
-}
-
-/* Hover Effects */
-.card-container:hover .card {
-  background-color: #020088;
-  color: white;
-}
-
-.card-container:hover .card h3,
-.card-container:hover .card p {
-  color: white;
-}
-
-/* Ensuring Circle Remains Unchanged on Hover */
-
-/* API Section */
-.api-section {
-  margin: 50px 0;
-}
-
-.api-section h2 {
-  text-align: center;
-  font-size: 64px;
-  margin-bottom: 20px;
-  color: #000000;
-  font-family: "Poppins", sans-serif;
-  font-weight:900;
-  font-style: normal;
-}
-
-.api-content {
-  display: flex;
-  justify-content: space-around;
-}
-
-.api-item {
-  text-align: center;
-}
-
-.image-holder {
-  width: 400px;
-  height: 300px;
-  object-fit: contain;
-  background-color: #ffffff;
-  margin-bottom: 10px;
-  border-radius: 8px;
-  animation: fadeInOut 2s infinite;
-}
-
-
-
-/* Footer */
-.footer {
-  background-color:#020088;
-  color: #fff;
-  padding: 30px 15px;
-  font-family: 'Arial', sans-serif;
-}
-
-.footer-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-}
-
-.footer-container > div {
-  flex: 1;
-  min-width: 200px;
-  text-align: center;
-}
-
-.footer-container h3 {
-  font-size: 1.2rem;
-  margin-bottom: 10px;
-  text-transform: uppercase;
-}
-
-.footer a {
-  display: block;
-  color: #fff;
-  text-decoration: none;
-  margin: 5px 0;
-  transition: color 0.3s ease;
-}
-
-.footer a:hover {
-  color: #ff9d00;
-}
-
-.footer .social-media i,
-.footer .menu i{
-  margin-right: 5px;
-}
-
-.footer p {
-  margin: 5px 0;
-}
-
-.footer .developer-name span {
-  font-weight: bold;
-  color: #ff9d00;
-}
-
-.footer .branding p {
-  font-size: 0.9rem;
-}
-
-.footer .menu a,
-.footer .social-media a {
-  text-transform: capitalize;
-}
-
-.footer .menu {
-  margin-top: 10px;
-}
-
-.footer-container div:last-child {
-  text-align: right;
-}
-
-@media (max-width: 768px) {
-  .footer-container {
+  nav {
+    position: absolute;
+    top: 60px; /* Below the header */
+    right: 0;
+    width: 200px; /* Width of the dropdown */
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: none; /* Initially hidden */
     flex-direction: column;
+    z-index: 100;
   }
 
-  .footer-container div {
+  nav ul {
+    flex-direction: column; /* Stack navigation items vertically */
+    gap: 10px;
+    padding: 10px;
+    list-style: none;
+    margin: 0;
+  }
+
+  nav a {
+    font-size: 14px; /* Adjust font size */
+    text-align: left;
+    text-decoration: none;
+    color: black;
+    padding: 5px 10px;
+    display: block;
+  }
+
+  nav a:hover {
+    background-color: #f0f0f0;
+    border-radius: 4px;
+  }
+
+  /* Show menu when active */
+  .hamburger.active + nav {
+    display: flex;
+    flex-direction: column; /* Align items vertically */
+    position: absolute;
+    top: 60px; /* Below the header */
+    right: 0;
+    background-color: #fff;
+    width: 200px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+  }
+
+  .cookie-banner {
+    background: #ffffff;
+    max-width: 300px;
+    height: auto;
+  }
+
+  .cookie-image {
+    margin-top: 20%;
+    width: 150px;
+    height: 150px;
+  }
+
+  .cookie-content {
+    margin-top: 12%;
+    padding: 20px;
     text-align: center;
+  }
+
+  section.email-validation {
+    height: 420px;
+    margin: 0;
+    padding: 0;
+  }
+
+  input[type="email"],
+  textarea,
+  input[type="text"] {
+    width: 94%;
+  }
+
+  .background-image {
+    height: 150px;
+  }
+
+  .background-image h2 {
+    font-size: 24px;
+    margin-bottom: 5em;
+  }
+
+  .form-container {
+    margin: 30px auto 0 auto;
   }
 }

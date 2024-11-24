@@ -1,0 +1,112 @@
+body {
+    font-family: "Arial", sans-serif;
+    margin: 20px;
+    background-color: #f9fafb;
+    color: #333;
+    margin: 0;
+  }
+
+/* Contact Support Page Styles */
+.contact-support__wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 94.3vh;
+    background: url("/images/email-bg.jpg"); /* Matches website theme background */
+    margin: 0;
+    padding: 20px; /* Ensures spacing on smaller screens */
+  }
+  
+  .contact-support__card {
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 30px;
+    max-width: 500px;
+    width: 100%; /* Makes the card responsive */
+    text-align: left;
+    font-family: Arial, sans-serif;
+    color: #333;
+  }
+  
+  .contact-support__card hr {
+    width: 100%;
+    height: 1.5px;
+    background-color: #00000089;
+    border: none;
+    margin: 0 auto;
+    margin-bottom: 10px;
+  }
+  
+  .contact-support__title {
+    font-size: 25px;
+    color: #000000; /* Theme's primary color */
+    margin: 20px auto;
+    text-align: center; /* Aligns title for better balance */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .contact-support__title img {
+    margin-left: 10px;
+    width: auto;
+    height: 32px;
+  }
+  
+  .contact-support__text {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 15px;
+  }
+  
+  .contact-support__link,
+  .contact-support__email {
+    color: #007bff;
+    text-decoration: none;
+    word-wrap: break-word; /* Prevents long links from overflowing */
+  }
+  
+  .contact-support__link:hover,
+  .contact-support__email:hover {
+    text-decoration: underline;
+  }
+  
+  .contact-support__button-wrapper {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .contact-support__button {
+    background-color: #0084ff;
+    color: #fff;
+    padding: 8px 35px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+  }
+  
+  .contact-support__button:hover {
+    background-color: #006cdf;
+    color: white;
+    text-decoration: none;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 480px) {
+    .contact-support__title {
+      font-size: 20px;
+    }
+  
+    .contact-support__text {
+      font-size: 13px;
+    }
+  
+    .contact-support__button {
+      padding: 0.8em 6em;
+      font-size: 14px;
+    }
+  }
